@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/fairy-rulepack-registry/registry.schema.json",
+  "title": "FAIRy Rulepack Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "updated_at", "rulepacks"],
+  "properties": {
+    "version": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Registry schema version"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the registry was last updated (YYYY-MM-DD)"
+    },
+    "rulepacks": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/rulepack" }
+    }
+  },
+  "$defs": {
+    "rulepack": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "repo", "path", "license", "status", "versions"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$",
+          "description": "Stable rulepack identifier (lowercase, digits, underscores)"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 120
+        },
+        "repo": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://github\\.com/[^/]+/[^/]+/?$",
+          "description": "Repository URL where the rulepack lives"
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^\\\\]+$",
+          "description": "Path within the repo to the rulepack directory"
+        },
+        "license": {
+          "type": "string",
+          "minLength": 1,
+          "description": "SPDX-like identifier (recommended: CC0-1.0)"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["official", "community", "experimental"]
+        },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1, "maxLength": 40 },
+          "uniqueItems": true,
+          "description": "Short discovery tags"
+        },
+        "supported_by": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "description": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 500
+        },
+        "homepage": {
+          "type": "string",
+          "format": "uri"
+        },
+        "contact": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 120,
+          "description": "Optional contact (name, handle, or email-ish string)"
+        },
+        "versions": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/rulepackVersion" }
+        }
+      }
+    },
+    "rulepackVersion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["version", "ref", "file", "min_fairy"],
+      "properties": {
+        "version": {
+          "type": "string",
+          "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$",
+          "description": "SemVer rulepack version"
+        },
+        "ref": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "description": "Git tag (preferred) or commit SHA"
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^\\\\]+\\.(ya?ml|json)$",
+          "description": "Rulepack file name within the rulepack path"
+        },
+        "min_fairy": {
+          "type": "string",
+          "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$",
+          "description": "Minimum FAIRy-core engine version required"
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 300
+        }
+      }
+    }
+  }
+}
