@@ -1,0 +1,65 @@
+name: Starter workflow / template (cross-rulepack)
+description: Propose a starter template (e.g., sources.csv/yaml) or workflow docs that span multiple rulepacks.
+title: "[starter] "
+labels: ["type:template", "status:needs-triage"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Starter name
+      placeholder: meta-analysis provenance starter
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / user story
+      placeholder: "As a researcher doing a meta-analysis, I need to track datasets + provenance without a gnarly spreadsheet..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal (what would we add in this repo?)
+      description: Keep registry repo thin—templates, docs, example bundles, pointers to rulepacks.
+      placeholder: |
+        - Add sources.csv template
+        - Add example sources.yaml
+        - Add short doc: spreadsheet -> template -> fairy validate -> Evidence Kit
+        - Link to GEO + ENA rulepacks
+    validations:
+      required: true
+
+  - type: textarea
+    id: out_of_scope
+    attributes:
+      label: Explicitly out of scope
+      placeholder: |
+        - PDF storage/annotation
+        - Zotero/ELN features
+        - Building a reference manager UI
+    validations:
+      required: false
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Suggested priority
+      options:
+        - P0
+        - P1
+        - P2
+        - P3
+      default: 2
+    validations:
+      required: true
+
+  - type: textarea
+    id: related
+    attributes:
+      label: Related links / context
+      description: Slack thread link, screenshots, examples, etc.
+    validations:
+      required: false
