@@ -1,0 +1,90 @@
+name: Add / update registry entry
+description: Add a new rulepack to registry.yaml, or update an existing entry (versions, refs, metadata).
+title: "[registry] "
+# If you haven't created labels yet, either create them first or delete the next line.
+labels: ["type:registry", "status:needs-triage"]
+body:
+  - type: dropdown
+    id: change_type
+    attributes:
+      label: What are you changing?
+      options:
+        - Add new rulepack entry
+        - Update existing entry metadata
+        - Add new version to existing entry
+        - Update ref (tag/SHA) for a version
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: rulepack_id
+    attributes:
+      label: Rulepack ID (existing or proposed)
+      description: Lowercase; underscores ok (e.g., geo_bulk_rnaseq, ena_webin_hygiene)
+      placeholder: geo_bulk_rnaseq
+    validations:
+      required: true
+
+  - type: input
+    id: repo
+    attributes:
+      label: Rulepack repo (GitHub org/repo)
+      placeholder: yuummmer/fairy-rulepacks-geo
+    validations:
+      required: true
+
+  - type: input
+    id: path
+    attributes:
+      label: Path to rulepack file in repo
+      placeholder: rulepacks/geo@0.2.0.yaml
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Rulepack version being added/updated
+      placeholder: 0.2.0
+    validations:
+      required: true
+
+  - type: input
+    id: ref
+    attributes:
+      label: Git ref for this version (tag preferred)
+      description: Prefer tags (e.g., v0.2.0). Full commit SHA acceptable if needed.
+      placeholder: v0.2.0
+    validations:
+      required: true
+
+  - type: input
+    id: min_fairy
+    attributes:
+      label: Minimum FAIRy-core version required
+      placeholder: 0.3.0
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary / rationale
+      description: Why is this change needed? Any user-facing impact?
+      placeholder: "Add GEO rulepack v0.2.0 with updated required columns + fixtures; tagged release."
+    validations:
+      required: true
+
+  - type: textarea
+    id: checklist
+    attributes:
+      label: Checklist
+      value: |
+        - [ ] Rulepack repo is public
+        - [ ] License is clear (recommended CC0-1.0)
+        - [ ] README explains intended use
+        - [ ] Includes at least one tiny fixture dataset
+        - [ ] Registry entry includes repo + path + version + ref + min_fairy
+    validations:
+      required: false

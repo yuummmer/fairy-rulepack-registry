@@ -44,6 +44,14 @@ Each entry has a `status`:
 
 PRs are welcome!
 
+## Where should I file an issue?
+
+This repo stays intentionally **thin** (an index + cross-rulepack templates/docs).
+
+- **Rulepack changes** (new checks, required fields, fixtures, releases) → file in the specific rulepack repo (e.g. `fairy-rulepacks-geo`, `fairy-rulepacks-ena`).
+- **Registry changes** (adding/updating entries in `registry.yaml`, ecosystem docs, cross-rulepack starter templates) → file here.
+- **Engine features** (new rule types, report formats, multi-input behavior) → file in `yuummmer/fairy-core`.
+
 ### Requirements
 A rulepack repo must:
 1. Be publicly accessible (GitHub is easiest to start)
