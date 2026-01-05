@@ -1,29 +1,30 @@
 version: 1
-updated_at: 2025-12-19
+updated_at: 2026-01-05
 rulepacks:
   - id: geo_bulk_seq
     title: "GEO bulk-seq starter"
     repo: "https://github.com/yuummmer/fairy-rulepacks-geo"
     path: "rulepacks/geo_bulk_seq"
     license: "CC0-1.0"
-    status: "official"      # or community/experimental
+    status: "official"      # official/community/experimental
     tags: ["ncbi", "geo", "rnaseq", "bulk"]
     supported_by: "FAIRy community"
     versions:
       - version: "0.1.0"
-        ref: "v0.1.0"        # git tag or commit sha
+        ref: "v0.1.0"
         file: "v0_1_0.json"
         min_fairy: "0.2.0"
 
   - id: ena_webin_cli
     title: "ENA Webin-CLI naming hygiene"
-    repo: "https://github.com/yuummmer/fairy-rulepacks-ena"
+    repo: "https://github.com/yuummmer/fairy-rulepacks-insdc"
     path: "rulepacks/ena_webin_cli"
     license: "CC0-1.0"
     status: "official"
-    tags: ["ena", "webin", "ncbi", "ebi", "genomics"]
+    tags: ["ena", "webin", "ncbi", "ebi", "genomics", "insdc", "metadata", "submission"]
+    supported_by: "FAIRy community"
     versions:
       - version: "0.1.0"
-        ref: "main"
+        ref: "v0.1.0"
         file: "v0_1_0.json"
         min_fairy: "0.2.0"
