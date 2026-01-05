@@ -2,7 +2,7 @@
 
 This repository is a **machine-readable index of FAIRy rulepacks**.
 
-Rulepacks themselves live in separate repositories (e.g. `fairy-rulepacks-geo`, `fairy-rulepacks-ena`).  
+Rulepacks themselves live in separate repositories (e.g. `fairy-rulepacks-geo`, `fairy-rulepacks-insdc`).  
 This repo exists so humans *and tools* can discover rulepacks consistently over time.
 
 ## What is a rulepack?
@@ -48,7 +48,7 @@ PRs are welcome!
 
 This repo stays intentionally **thin** (an index + cross-rulepack templates/docs).
 
-- **Rulepack changes** (new checks, required fields, fixtures, releases) → file in the specific rulepack repo (e.g. `fairy-rulepacks-geo`, `fairy-rulepacks-ena`).
+- **Rulepack changes** (new checks, required fields, fixtures, releases) → file in the specific rulepack repo (e.g. `fairy-rulepacks-geo`, `fairy-rulepacks-insdc`).
 - **Registry changes** (adding/updating entries in `registry.yaml`, ecosystem docs, cross-rulepack starter templates) → file here.
 - **Engine features** (new rule types, report formats, multi-input behavior) → file in `yuummmer/fairy-core`.
 
